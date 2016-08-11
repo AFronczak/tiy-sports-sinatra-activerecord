@@ -58,12 +58,25 @@ post '/players/search' do
   end
 end
 
+post '/players/delete/:id' do
+  @id = params["id"]
+  players = Player.find_by(id: @id)
+
+  if players
+    players.delete
+    redirect "/"
+  else
+    erb :team_not_found.erb
+  end
+end
+
 get '/players/:id' do
   player_id = params[:id]
   @player = Player.find_by(id: player_id)
 
   erb :player_details
 end
+
 
 ##############################################################################################################
 ##############################################################################################################
@@ -96,8 +109,5 @@ get '/teams/:id' do
 
   erb :team_details
 end
-
-
-
 
 #

@@ -17,6 +17,10 @@
       <h1>No Player Found</h1>
     <% end %>
 
+    <form action="/players/delete/<%= @player.id %>" method="post">
+      <input type="submit" value="Delete">
+    </form>
+
     <a href="/">Home</a>
   </body>
 </html>
